@@ -12,21 +12,28 @@
 
     bloqueie o acesso
 */
-const usuario = 'Acesso@gmail.com'
-let senhas = [5420, 5432, 2345, 2301, 4593, 1000]
-const senhaCorreta = 2301
+let usuario = document.getElementById('txt1')
+let senha = document.getElementById('senha')
+let resultado = document.getElementById('res')
 let erro = 0
+let tentativas = 3
+let acerto = 0
+const senhaCorreta = 2301
+const usuarioCorreto = 'geraldo123@gmail.com'
 
-console.log('---------  Login  ---------')
-console.log(`Usuário: ${usuario}`)
-do {
-    for(let pos in senhas) {
-        console.log(`Senha: ${senhas[pos]}`)
-        if(senhas[pos] == senhaCorreta) {
-            console.log('ACESSO LIBERADO!')
-        } else {
-            console.log('Senha Incorreta. Tente novamente!')
-            erro++
+if(usuario.length == 0 || senha.length == 0) {
+    alert('Informe usuario e senha!')
+} else {
+    function Entrar() {
+        while(erro < 3 || acerto < 1) {
+            if(senha.length == senhaCorreta.length && usuario.length == usuarioCorreto.length) {
+                resultado.innerHTML = 'ACESSO LIBERADO!'
+                acerto++
+            } else {
+                tentativas--
+                erro++
+                alert(`Senha Incorreta! Possui mais ${tentativas} tentativas.`)
+            }
         }
     }
-} while(senhas[pos] != senhaCorreta)
+}
