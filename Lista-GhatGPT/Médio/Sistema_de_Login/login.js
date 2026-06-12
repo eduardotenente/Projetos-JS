@@ -12,19 +12,19 @@
 
     bloqueie o acesso
 */
-let usuario = document.getElementById('txt1')
-let senha = document.getElementById('senha')
-let resultado = document.getElementById('res')
-let erro = 0
-let tentativas = 3
-let acerto = 0
-const senhaCorreta = 2301
-const usuarioCorreto = 'geraldo123@gmail.com'
 
-if(usuario.length == 0 || senha.length == 0) {
-    alert('Informe usuario e senha!')
-} else {
-    function Entrar() {
+function Entrar() {
+    let usuario = document.getElementById('txt1')
+    let senha = document.getElementById('senha')
+    if(usuario.value.length == 0 || senha.value.length == 0) {
+        alert('Informe usuario e senha!')
+    } else {
+        let resultado = document.getElementById('res')
+        let erro = 0
+        let tentativas = 3
+        let acerto = 0
+        const senhaCorreta = 2301
+        const usuarioCorreto = 'geraldo123@gmail.com'
         while(erro < 3 || acerto < 1) {
             if(senha.length == senhaCorreta.length && usuario.length == usuarioCorreto.length) {
                 resultado.innerHTML = 'ACESSO LIBERADO!'
@@ -34,6 +34,7 @@ if(usuario.length == 0 || senha.length == 0) {
                 erro++
                 alert(`Senha Incorreta! Possui mais ${tentativas} tentativas.`)
             }
+            appendChild(resultado)
         }
     }
 }
